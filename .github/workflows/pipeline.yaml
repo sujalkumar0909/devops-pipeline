@@ -1,4 +1,4 @@
-name: CI pipeline
+name: CI piipeline
 
 on:
   push:
@@ -13,21 +13,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v5
 
-      - name: Setup Node.js
+      - name: Set up Node.Js
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
-
-      - name: Cache node modules
-        uses: actions/cache@v4
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+          node-version: 16
 
       - name: Install dependencies
-        run: npm ci
+        run: npm Install
 
       - name: Run tests
         run: npm test
